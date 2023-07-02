@@ -3,7 +3,7 @@ const { expect } = require('@playwright/test');
 const { test } = require("../../test");
 
 test.describe('Страница Catalog', () => {
-  test('Компонент карточки соответствует макету @bug-id=9', async ({ catalogPage, checkScreenshot }) => {
+  test('Отоброжение карточки товара @bug-9', async ({ catalogPage, checkScreenshot }) => {
     await catalogPage.gotoId();
 
     await expect(catalogPage.productDetails).toBeVisible()
@@ -11,7 +11,7 @@ test.describe('Страница Catalog', () => {
     await checkScreenshot(catalogPage.productDetails)
   });
 
-  test('User Flow - Cообщение об успешной валидации формы в корзине @bug-id=5 @bug-id=6 @bug-id=7 @bug-id=8 @bug-id=10', async ({ catalogPage, cartPage, checkScreenshot }) => {
+  test('Успешное оформление заказа @bug-5 @bug-6 @bug-7 @bug-8 @bug-10', async ({ catalogPage, cartPage, checkScreenshot }) => {
     await catalogPage.gotoId()
 
     await expect(catalogPage.addToCartButton).toBeVisible()

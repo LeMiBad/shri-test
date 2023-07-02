@@ -24,7 +24,7 @@ describe('Тестирование api', () => {
 describe('Тестирование api', () => {
     it("Отправка тестового запроса на оформление заказа", async () => {
         expect.assertions(1);
-        const data = {
+        const mockData = {
             "form": { "name": "Леонид", "phone": "79600447093", "address": "Дом" },
             "cart": {
                 "0": {
@@ -36,7 +36,7 @@ describe('Тестирование api', () => {
         }
     
         try {
-            const response = await axios.post(postUrl, data);
+            const response = await axios.post(postUrl, mockData);
             const id = response.data.id;
     
             const orders = await axios.get(`${URL}api/orders/`);
