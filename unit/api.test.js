@@ -8,24 +8,24 @@ const urlItem = `${URL}api/products/7?bug_id=${BUG_ID}`;
 const postUrl = `${URL}api/checkout?bug_id=${BUG_ID}`;
 
 
-describe('Тестовые GET запросы', () => {
-    it("Присутствуют ли у продукта все поля", async () => {
+describe('Тестирование api', () => {
+    it("Наличие всех полей у продукта", async () => {
         const response = await axios.get(urlProducts);
         expect(response.data[0]).toHaveProperty('name');
     });
 
-    it("Приходит актуальные даные по товару", async () => {
+    it("Наличие актуальных данных по товару", async () => {
         const response = await axios.get(urlItem);
         expect(response.data.id).toBe(7);
     });
 });
 
 
-describe('Тестовые POST запросы', () => {
-    it("Отправляет пост запрос", async () => {
+describe('Тестирование api', () => {
+    it("Отправка тестового запроса на оформление заказа", async () => {
         expect.assertions(1);
         const data = {
-            "form": { "name": "33/33", "phone": "+333333333333", "address": "33/33" },
+            "form": { "name": "Леонид", "phone": "79600447093", "address": "Дом" },
             "cart": {
                 "0": {
                     "name": "Practical Chair",
@@ -42,7 +42,8 @@ describe('Тестовые POST запросы', () => {
             const orders = await axios.get(`${URL}api/orders/`);
             const ordersInfo = orders.data;
             expect(id).toBe(ordersInfo.length);
-        } catch (error) {
+        } 
+        catch (error) {
             expect(error).toMatch('error');
         }
     });
